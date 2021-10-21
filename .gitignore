@@ -4,3 +4,5 @@ myapp/migrations/__pycache__/*
 myapp/migrations/*_initial.py
 db.sqlite3
 .env
+Pipfile.lock
+Pipfile
