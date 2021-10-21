@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container my-5">
+    <style>
+        .card-img-top{
+            height: 350px;
+        }
+    </style>
+    <div class="row">
+        <div class="col-3">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <h4 class="nav-link text-dark">Categories</h4>
+                </li>
+                <li class="list-group-item">
+                    <a href="/" class="nav-link">All</a>
+                </li>
+                {% for category in categories %}
+                <li class="list-group-item">
+                    <a href="{% url 'gallery' %}?category={{category.name}}" class="nav-link">{{category.name}}</a>
+                </li>
+                {% endfor %}
+                <li class="list-group-item">
+                    <a href={% url 'add' %} class="nav-link btn btn-danger text-light">Add</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-9">
+            <div class="row">
+                {% for photo in photos %}
+                <div class="col-4 mb-2">
+                    <div class="card mx-auto" style="width: 18rem;">
+                        <img src={{photo.image.url}} class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                the card's content.</p>
+                        </div>
+                        <div>
+                            <a href="" class="nav-link btn btn-secondary text-light m-3">View</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
