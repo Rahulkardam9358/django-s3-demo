@@ -18,13 +18,16 @@ def gallery(request):
 def addPhoto(request):
     categories = Category.objects.all()
     if request.method == 'POST':
-        category = request.POST['category']
-        desc = request.POST['desc']
+        data = request.POST
         image = request.FILES['image']
+        if data['cat'] != None:
+            category, created = Category.objects.get_or_create(name=data['cat'])
+        else:
+            category = Category.objects.get(id=data['category'])
         photo = Photo.objects.create(
-            category=Category.objects.get(id=category),
+            category=category,
             image=image,
-            desc=desc
+            desc=data['desc']
         )
         photo.save()
         return redirect('gallery')

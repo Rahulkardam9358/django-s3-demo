@@ -6,6 +6,9 @@
         <form action="" method="POST" class="col-6 mx-auto my-5" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Description" name="desc">
+            </div>
+            <div class="mb-3">
                 <select name="category" id="" class="form-select">
                     <option>Select categories</option>
                     {% for category in categories %}
@@ -13,8 +16,9 @@
                     {% endfor %}
                 </select>
             </div>
+            <h6 class="text-center">Or</h6>
             <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Description" name="desc">
+                <input type="text" class="form-control" placeholder="Enter-Category" name="cat">
             </div>
             <div class="mb-3">
                 <input type="file" name="image" accept="image/*">
